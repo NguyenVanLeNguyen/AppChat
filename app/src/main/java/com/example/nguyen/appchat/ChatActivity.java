@@ -34,6 +34,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -107,6 +110,7 @@ public class ChatActivity extends AppCompatActivity {
         mCurrentUserId = mAuth.getCurrentUser().getUid();
 
         mChatUser = getIntent().getStringExtra("user_id");
+
         String userName = getIntent().getStringExtra("user_name");
         type = getIntent().getStringExtra("type");
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -168,6 +172,23 @@ public class ChatActivity extends AppCompatActivity {
                     String online = dataSnapshot.child("online").getValue().toString();
                     String image = dataSnapshot.child("image").getValue().toString();
 
+                    if(!image.equals("default")){
+                        Picasso.get().load(image).networkPolicy(NetworkPolicy.OFFLINE)
+                                .placeholder(R.drawable.default_avatar).into(mProfileImage, new Callback() {
+                            @Override
+                            public void onSuccess() {
+
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                Picasso.get().load(image).placeholder(R.drawable.default_avatar).into(mProfileImage);
+                            }
+
+
+                        });
+
+                    }
                     if (online.equals("true")) {
 
                         mLastSeenView.setText("Online");
@@ -183,6 +204,8 @@ public class ChatActivity extends AppCompatActivity {
                         mLastSeenView.setText(lastSeenTime);
 
                     }
+
+
 
                 }
 
@@ -229,8 +252,61 @@ public class ChatActivity extends AppCompatActivity {
 
                 }
             });
-        }
 
+            mRootRef.child("Friends").child(mCurrentUserId).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(!dataSnapshot.hasChild(mChatUser)){
+                        mChatAddBtn.setEnabled(false);
+                        mChatLocBtn.setEnabled(false);
+                        mChatSendBtn.setEnabled(false);
+                        mChatMessageView.setEnabled(false);
+                    }
+                    else{
+                        mChatAddBtn.setEnabled(true);
+                        mChatLocBtn.setEnabled(true);
+                        mChatSendBtn.setEnabled(true);
+                        mChatMessageView.setEnabled(true);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+        else  if(type.equals("Group")){
+            mRootRef.child("Group_Image").child(mChatUser).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String image = dataSnapshot.child("image").getValue().toString();
+
+                    if(!image.equals("default")){
+                        Picasso.get().load(image).networkPolicy(NetworkPolicy.OFFLINE)
+                                .placeholder(R.drawable.default_avatar).into(mProfileImage, new Callback() {
+                            @Override
+                            public void onSuccess() {
+
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                Picasso.get().load(image).placeholder(R.drawable.default_avatar).into(mProfileImage);
+                            }
+
+
+                        });
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
 
         mChatSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
