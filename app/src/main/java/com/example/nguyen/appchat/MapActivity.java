@@ -40,6 +40,7 @@ public class MapActivity extends AppCompatActivity implements GoogleApiClient.Co
     private Button spambtn;
     private Button sendbtn;
     private double lat = 0.0,lng = 0.0;
+    private boolean flag = false;
     public static final String TAG = MainActivity.class.getSimpleName();
     private static final long UPDATE_INTERVAL = 5000;
     private static final long FASTEST_INTERVAL = 5000;
@@ -80,12 +81,15 @@ public class MapActivity extends AppCompatActivity implements GoogleApiClient.Co
         sendbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String location = new String();
-                location = lat+","+lng;
-                Intent intent=new Intent();
-                intent.putExtra("Location",location);
-                setResult(Activity.RESULT_OK,intent);
-                finish();
+                if(flag){
+                    String location = new String();
+                    location = lat+","+lng;
+                    Intent intent=new Intent();
+                    intent.putExtra("Location",location);
+                    setResult(Activity.RESULT_OK,intent);
+                    finish();
+                }
+
             }
         });
     }
@@ -152,6 +156,7 @@ public class MapActivity extends AppCompatActivity implements GoogleApiClient.Co
             myMap.clear();
             Marker currentMarker = myMap.addMarker(option);
             currentMarker.showInfoWindow();
+            flag = true;
         }
         else{
             Toast.makeText(this, "Location not found!", Toast.LENGTH_LONG).show();

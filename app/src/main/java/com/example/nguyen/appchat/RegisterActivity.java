@@ -1,6 +1,7 @@
 package com.example.nguyen.appchat;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -101,6 +102,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                             mDatabase.setValue(userMap);
                             mRegProgress.dismiss();
+                            Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                            loginIntent.putExtra("email", email);
+                            loginIntent.putExtra("pass", password);
+                            startActivity(loginIntent);
                         } else {
                             mRegProgress.hide();
                             Toast.makeText(RegisterActivity.this, "Error!", Toast.LENGTH_LONG).show();

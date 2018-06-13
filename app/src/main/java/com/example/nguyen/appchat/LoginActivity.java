@@ -47,7 +47,12 @@ public class LoginActivity extends AppCompatActivity {
         mLoginEmail = (TextInputLayout) findViewById(R.id.log_mail_tip);
         mLoginPassword = (TextInputLayout) findViewById(R.id.log_pass_tip);
         mLogin_btn = (Button) findViewById(R.id.log_login_btn);
-
+        String remail = getIntent().getStringExtra("email");
+        String rpassword = getIntent().getStringExtra("pass");
+        if(remail != null && rpassword != null){
+            mLoginEmail.getEditText().setText(remail);
+            mLoginPassword.getEditText().setText(rpassword);
+        }
         mLogin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 } else {
 
-                    mLoginProgress.hide();
+                    mLoginProgress.dismiss();
 
                     String task_result = task.getException().getMessage().toString();
 
