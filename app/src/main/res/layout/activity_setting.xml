@@ -23,6 +23,7 @@
     <TextView
         android:id="@+id/set_username_txt"
         android:layout_width="93dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -34,6 +35,7 @@
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:gravity="center"
         android:text="status" />
 
     <Button
@@ -51,6 +53,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="58dp"
+        android:layout_marginBottom="88dp"
         android:text="Change Status" />
 </RelativeLayout>

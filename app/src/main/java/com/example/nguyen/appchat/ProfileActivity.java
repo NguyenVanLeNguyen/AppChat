@@ -61,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("notifications");
         mCurrent_user = FirebaseAuth.getInstance().getCurrentUser();
 
-        profieToolbar = (Toolbar) findViewById(R.id.profie_appBar);
+        profieToolbar = (Toolbar) findViewById(R.id.profile_appBar);
         setSupportActionBar(profieToolbar);
         getSupportActionBar().setTitle("Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     tools:context=".ProfileActivity">
-
-    <include android:id="@+id/profie_appBar"
+    <include android:id="@+id/profile_appBar"
         layout="@layout/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></include>
@@ -17,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/profie_appBar"
+        android:layout_below="@+id/profile_appBar"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/default_avatar" />
