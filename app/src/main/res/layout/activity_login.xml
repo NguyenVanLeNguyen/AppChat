@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".Activity.LoginActivity">
     <include layout="@layout/app_bar_layout"
         android:id="@+id/login_page_toolbar"></include>
 
@@ -71,5 +71,6 @@
         android:layout_marginBottom="50dp"
         android:text="Login"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="331dp" />
+        tools:layout_editor_absoluteY="331dp"
+        android:background="@drawable/backgroud_button"/>
 </RelativeLayout>

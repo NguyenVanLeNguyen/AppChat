@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Start_Activity">
+    tools:context=".Activity.Start_Activity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,7 +34,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="160dp"
-        android:text="@string/create_an_acount" />
+        android:text="@string/create_an_acount"
+        android:background="@drawable/backgroud_button"/>
 
     <Button
         android:id="@+id/start_log_btn"
@@ -43,5 +44,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="110dp"
-        android:text="LogIn" />
+        android:text="LogIn"
+        android:background="@drawable/backgroud_button"/>
 </RelativeLayout>

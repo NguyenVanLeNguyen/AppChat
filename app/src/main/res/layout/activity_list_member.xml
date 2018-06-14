@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListMemberActivity">
+    tools:context=".Activity.ListMemberActivity">
 
     <!-- TODO: Update blank fragment layout -->
     <include layout="@layout/app_bar_layout" android:id="@+id/friends_appBar" />
@@ -27,6 +27,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
-            android:text="Add member" />
+            android:text="Add member"
+            android:background="@drawable/backgroud_button"/>
     </android.support.v7.widget.LinearLayoutCompat>
 </RelativeLayout>

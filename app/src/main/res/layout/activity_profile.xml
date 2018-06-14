@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".ProfileActivity">
+    tools:context=".Activity.ProfileActivity">
     <include android:id="@+id/profile_appBar"
         layout="@layout/app_bar_layout"
         android:layout_width="match_parent"

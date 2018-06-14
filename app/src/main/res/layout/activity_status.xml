@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatusActivity">
+    tools:context=".Activity.StatusActivity">
 
     <include android:id="@+id/status_appBar"
         layout="@layout/app_bar_layout"
@@ -33,5 +33,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="159dp"
-        android:text="Save" />
+        android:text="Save"
+        android:background="@drawable/backgroud_button"/>
 </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity">
+    tools:context=".Activity.MapActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,13 +27,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:text="Chose Location" />
+                android:text="Chose Location"
+                android:background="@drawable/backgroud_button"/>
             <Button
                 android:id="@+id/map_sendlocation_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:text="Send" />
+                android:text="Send"
+                android:background="@drawable/backgroud_button"/>
         </LinearLayout>
 
 

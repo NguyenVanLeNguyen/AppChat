@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AvatarGroupActivity">
+    tools:context=".Activity.AvatarGroupActivity">
     <include android:id="@+id/group_image_appBar"
         layout="@layout/app_bar_layout"
         android:layout_width="match_parent"
@@ -37,7 +37,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="140dp"
-        android:text="Change Image" />
+        android:text="Change Image"
+        android:background="@drawable/backgroud_button"/>
 
 
 
