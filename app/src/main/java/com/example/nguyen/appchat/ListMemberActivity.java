@@ -1,13 +1,15 @@
 package com.example.nguyen.appchat;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -36,8 +38,9 @@ public class ListMemberActivity extends AppCompatActivity {
 
     private RecyclerView mFriendsList;
     private Button mFriendsButton;
-    private CheckBox mcheck;
+
     private DatabaseReference mFriendsDatabase;
+    private DatabaseReference mUserInGroupDatabase;
     private List<String> idList;
     private LinearLayoutManager mLayoutManager;
     private String groupId;
@@ -67,6 +70,7 @@ public class ListMemberActivity extends AppCompatActivity {
         idList = new ArrayList<String>();
         final String mCurrentUserid = mAuth.getCurrentUser().getUid();
         mFriendsDatabase = FirebaseDatabase.getInstance().getReference().child("Friends").child(mCurrentUserid);
+        mUserInGroupDatabase = FirebaseDatabase.getInstance().getReference().child("Groups");
         mMessDatabase = FirebaseDatabase.getInstance().getReference().child("Groups");
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mLayoutManager = new LinearLayoutManager(this);
@@ -151,7 +155,6 @@ public class ListMemberActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
 
         FirebaseRecyclerAdapter<Users, FriendsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, FriendsViewHolder>(
 
@@ -240,15 +243,7 @@ public class ListMemberActivity extends AppCompatActivity {
                         friendsViewHolder.setUserStatus(userstatus);
                         friendsViewHolder.setUserImage(userThumb, getApplicationContext());
 
-                        friendsViewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent chatIntent = new Intent(getApplicationContext(), ChatActivity.class);
-                                chatIntent.putExtra("user_id", groupId);
-                                chatIntent.putExtra("user_name", groupName);
-                                startActivity(chatIntent);
-                            }
-                        });
+
                        /* mcheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             @Override
                             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -263,15 +258,7 @@ public class ListMemberActivity extends AppCompatActivity {
 
 
 
-                        friendsViewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
 
-                                Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
-                                profileIntent.putExtra("user_id", user_id);
-                                startActivity(profileIntent);
-                            }
-                        });
                     }
 
                     @Override
@@ -282,9 +269,16 @@ public class ListMemberActivity extends AppCompatActivity {
             }
         };
 
+        if(type.equals("add")){
+            mFriendsList.setAdapter(firebaseRecyclerAdapter);
+        }
+       else if(type.equals("remove")){
+            MemberAdapter memberAdapter = new MemberAdapter(getListUidInGroup());
+
+            mFriendsList.setAdapter(memberAdapter);
+        }
 
 
-        mFriendsList.setAdapter(firebaseRecyclerAdapter);
 
     }
     public static class FriendsViewHolder extends RecyclerView.ViewHolder {
@@ -349,6 +343,170 @@ public class ListMemberActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public class MemberAdapter extends
+            RecyclerView.Adapter<ViewHolder> {
+        private List<String> mMembers;
+
+        // Pass in the contact array into the constructor
+        public MemberAdapter(List<String> members) {
+            mMembers = members;
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            Context context = parent.getContext();
+            LayoutInflater inflater = LayoutInflater.from(context);
+
+            View contactView = inflater.inflate(R.layout.friends_single_layout, parent, false);
+
+            ViewHolder viewHolder;
+            viewHolder = new ViewHolder(contactView);
+            return viewHolder;
+
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+                String uidUser = mMembers.get(position);
+            mUsersDatabase.child(uidUser).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String userName = dataSnapshot.child("name").getValue().toString();
+                    String userThumb = dataSnapshot.child("thumb_image").getValue().toString();
+                    String userstatus = dataSnapshot.child("status").getValue().toString();
+                    if(dataSnapshot.hasChild("online")) {
+
+                        String userOnline = dataSnapshot.child("online").getValue().toString();
+                        holder.setUserOnline(userOnline);
+
+                    }
+
+                    holder.setDisplayName(userName);
+                    holder.setUserStatus(userstatus);
+                    holder.setUserImage(userThumb, getApplicationContext());
+
+                    holder.checkBox.setTag(position);
+                    holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            CheckBox cb = (CheckBox) view;
+                            if(cb.isChecked())
+                                idList.add(uidUser);
+                            else{
+                                for (String uid: idList) {
+                                    if(uid.equals(uidUser)){
+                                        idList.remove(uid);
+                                        //break;
+                                    }
+                                }
+                            }
+
+
+                        }
+                    });
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return mMembers.size();
+        }
+
+
+    }
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+
+        View mView;
+        CheckBox checkBox ;
+        public ViewHolder (View itemView) {
+            super(itemView);
+
+            mView = itemView;
+            checkBox = (CheckBox) mView.findViewById(R.id.checkBox);
+
+        }
+
+        public void setDisplayName(String name){
+
+            TextView userNameView = (TextView) mView.findViewById(R.id.friend_single_name);
+            userNameView.setText(name);
+
+        }
+
+        public void setUserStatus(String status){
+
+            TextView userStatusView = (TextView) mView.findViewById(R.id.friend_single_status);
+            userStatusView.setText(status);
+
+
+        }
+
+        public void setUserImage(String thumb_image, Context ctx){
+
+            CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.friend_single_image);
+
+            Picasso.get().load(thumb_image).placeholder(R.drawable.default_avatar).into(userImageView);
+
+        }
+
+
+        public CheckBox getCheckbox(){
+
+            CheckBox checkBox = (CheckBox) mView.findViewById(R.id.checkBox);
+            return checkBox;
+
+
+        }
+
+
+        public void setUserOnline(String online_status) {
+
+            ImageView userOnlineView = (ImageView) mView.findViewById(R.id.friend_single_online_icon);
+
+            if(online_status.equals("true")){
+
+                userOnlineView.setVisibility(View.VISIBLE);
+
+            } else {
+
+                userOnlineView.setVisibility(View.INVISIBLE);
+
+            }
+
+        }
+
+    }
+    private List<String> getListUidInGroup(){
+        ArrayList<String> listmember = new ArrayList<>();
+        mUserInGroupDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot  uiduser: dataSnapshot.getChildren() ){
+                    if(uiduser.hasChild(groupId))
+                        listmember.add(uiduser.getKey().toString());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return listmember;
     }
 
 }

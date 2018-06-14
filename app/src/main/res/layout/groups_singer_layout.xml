@@ -34,7 +34,7 @@
         android:layout_below="@+id/group_single_image"
         android:layout_marginEnd="21dp"
         android:layout_marginTop="-15dp"
-        android:text="remove members" />
+        android:text="remove" />
 
     <Button
         android:id="@+id/group_add_Button"
@@ -43,7 +43,7 @@
         android:layout_below="@+id/group_single_image"
         android:layout_marginTop="-15dp"
         android:layout_toEndOf="@+id/group_single_image"
-        android:text="add members" />
+        android:text="add" />
 
     <ImageButton
         android:id="@+id/group_outgoup_Button"

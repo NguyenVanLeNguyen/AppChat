@@ -32,6 +32,7 @@ public class Start_Activity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent reg_intent = new Intent(Start_Activity.this, LoginActivity.class);
+
                 startActivity(reg_intent);
 
             }
