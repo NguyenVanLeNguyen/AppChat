@@ -8,8 +8,10 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nguyen.appchat.R;
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout mLoginPassword;
 
     private Button mLogin_btn;
+    private TextView mForget;
 
     private ProgressDialog mLoginProgress;
 
@@ -48,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         mLoginEmail = (TextInputLayout) findViewById(R.id.log_mail_tip);
         mLoginPassword = (TextInputLayout) findViewById(R.id.log_pass_tip);
         mLogin_btn = (Button) findViewById(R.id.log_login_btn);
+        mForget = (TextView) findViewById(R.id.btn_forget_pass);
         String remail = getIntent().getStringExtra("email");
         String rpassword = getIntent().getStringExtra("pass");
         if(remail != null && rpassword != null){
@@ -72,6 +76,25 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        mForget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String emailAddress = mLoginEmail.getEditText().getText().toString();
+                if(!emailAddress.isEmpty()) {
+                    mAuth.sendPasswordResetEmail(emailAddress)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d("TAG", "Email sent.");
+                                        Toast.makeText(LoginActivity.this, "Emai sent. Please check email to continue!", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                }
             }
         });
     }
@@ -102,4 +125,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }

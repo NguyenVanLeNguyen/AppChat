@@ -73,8 +73,24 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/backgroud_button"
         android:text="Login"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="331dp"
-        android:background="@drawable/backgroud_button"/>
+        tools:layout_editor_absoluteY="331dp" />
+
+    <TextView
+        android:id="@+id/btn_forget_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Forget password?"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
 </RelativeLayout>
