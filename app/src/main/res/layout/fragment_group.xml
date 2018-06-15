@@ -29,7 +29,10 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@drawable/backgroud_button"
-            android:padding="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
             android:text="Creat A New Group" />
     </android.support.v7.widget.LinearLayoutCompat>
 </FrameLayout>

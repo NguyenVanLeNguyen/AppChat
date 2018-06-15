@@ -70,7 +70,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                     register_user(display_name, email, password);
 
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Some field is empty! Fill and try again!", Toast.LENGTH_LONG).show();
                 }
+
 
             }
         });
@@ -109,7 +112,8 @@ public class RegisterActivity extends AppCompatActivity {
                             startActivity(loginIntent);
                         } else {
                             mRegProgress.hide();
-                            Toast.makeText(RegisterActivity.this, "Error!", Toast.LENGTH_LONG).show();
+                            String task_mess = task.getException().getMessage().toString();
+                            Toast.makeText(RegisterActivity.this, "Error: " + task_mess, Toast.LENGTH_LONG).show();
                         }
                     }
                 });

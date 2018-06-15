@@ -34,8 +34,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="160dp"
-        android:text="@string/create_an_acount"
-        android:background="@drawable/backgroud_button"/>
+        android:background="@drawable/backgroud_button"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:text="@string/create_an_acount" />
 
     <Button
         android:id="@+id/start_log_btn"
@@ -43,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="110dp"
-        android:text="LogIn"
-        android:background="@drawable/backgroud_button"/>
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/backgroud_button"
+        android:text="LogIn" />
 </RelativeLayout>

@@ -34,18 +34,26 @@
         android:layout_below="@+id/group_single_image"
         android:layout_marginEnd="21dp"
         android:layout_marginTop="-15dp"
-        android:text="remove"
-        android:background="@drawable/backgroud_button"/>
+        android:background="@drawable/backgroud_button"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:text="remove" />
 
     <Button
         android:id="@+id/group_add_Button"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="123dp"
-        android:text="add"
-        android:background="@drawable/backgroud_button"/>
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@+id/group_remove_Button"
+        android:background="@drawable/backgroud_button"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:text="add" />
 
     <ImageButton
         android:id="@+id/group_outgoup_Button"

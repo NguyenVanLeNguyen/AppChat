@@ -46,17 +46,6 @@
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/profile_totalFriends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/profile_send_req_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp"
-        android:text="Total Friends"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-
     <Button
         android:id="@+id/profile_send_req_btn"
         android:layout_width="wrap_content"

@@ -20,21 +20,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name_text_layout"
+        android:layout_marginBottom="2dp"
         android:layout_marginLeft="10dp"
         android:layout_toEndOf="@+id/message_profile_layout"
-        android:padding="0dp"
+        android:background="@drawable/message_text_background"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
         android:text="Message Text"
         android:textColor="#000000"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:background="@drawable/message_text_background"
-        />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/name_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="2dp"
         android:layout_marginLeft="10dp"
         android:layout_toEndOf="@+id/message_profile_layout"
         android:text="Display Name"
@@ -72,6 +76,8 @@
         android:layout_height="200dp"
         android:layout_alignStart="@+id/message_image_layout"
         android:layout_below="@+id/message_image_layout"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/message_profile_layout" />
 
 

@@ -93,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     mLoginProgress.dismiss();
 
-                    String task_result = task.getException().getMessage().toString();
+                    String task_mess = task.getException().getMessage().toString();
 
-                    Toast.makeText(LoginActivity.this, "Error : " + task_result, Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Error : " + task_mess, Toast.LENGTH_LONG).show();
 
                 }
 

@@ -23,18 +23,20 @@
     <TextView
         android:id="@+id/set_username_txt"
         android:layout_width="93dp"
-        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="239dp"
+        android:layout_marginTop="255dp"
+        android:gravity="center"
         android:text="UserName" />
 
     <TextView
         android:id="@+id/set_status_txt"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignEnd="@+id/set_chStatus_btn"
+        android:layout_below="@+id/set_username_txt"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="status" />
 
@@ -45,8 +47,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="140dp"
-        android:text="Change Image"
-        android:background="@drawable/backgroud_button"/>
+        android:background="@drawable/backgroud_button"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:text="Change Image" />
 
     <Button
         android:id="@+id/set_chStatus_btn"
@@ -54,7 +60,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="88dp"
-        android:text="Change Status"
-        android:background="@drawable/backgroud_button"/>
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/backgroud_button"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:text="Change Status" />
 </RelativeLayout>

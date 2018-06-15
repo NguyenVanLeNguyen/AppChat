@@ -17,7 +17,8 @@
             android:id="@+id/mfriends_in_group_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="99">
 
         </android.support.v7.widget.RecyclerView>
