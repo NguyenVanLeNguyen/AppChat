@@ -88,7 +88,7 @@ public class AvatarGroupActivity extends AppCompatActivity {
 
                 if(!image.equals("default")){
                     Picasso.get().load(image).networkPolicy(NetworkPolicy.OFFLINE)
-                            .placeholder(R.drawable.default_avatar).into(mDisplayImage, new Callback() {
+                            .placeholder(R.drawable.default_group_avatar).into(mDisplayImage, new Callback() {
                         @Override
                         public void onSuccess() {
 
@@ -96,7 +96,7 @@ public class AvatarGroupActivity extends AppCompatActivity {
 
                         @Override
                         public void onError(Exception e) {
-                            Picasso.get().load(image).placeholder(R.drawable.default_avatar).into(mDisplayImage);
+                            Picasso.get().load(image).placeholder(R.drawable.default_group_avatar).into(mDisplayImage);
                         }
 
 

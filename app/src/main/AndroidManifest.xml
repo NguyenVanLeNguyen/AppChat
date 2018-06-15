@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:name=".App.LapitChat"
+        android:name=".AppChat"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -61,7 +61,8 @@
             android:name=".Activity.ListMemberActivity"
             android:parentActivityName=".Activity.MainActivity" />
         <activity android:name=".Activity.MapActivity" />
-        <activity android:name=".Activity.AvatarGroupActivity"></activity>
+        <activity android:name=".Activity.AvatarGroupActivity"
+            android:parentActivityName=".Activity.MainActivity"></activity>
     </application>
 
 </manifest>

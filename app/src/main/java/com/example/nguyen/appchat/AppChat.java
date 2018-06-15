@@ -1,4 +1,4 @@
-package com.example.nguyen.appchat.App;
+package com.example.nguyen.appchat;
 import android.app.Application;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
  * Created by AkshayeJH on 01/07/17.
  */
 
-public class LapitChat extends Application{
+public class AppChat extends Application{
 
     private DatabaseReference mUserDatabase;
     private FirebaseAuth mAuth;

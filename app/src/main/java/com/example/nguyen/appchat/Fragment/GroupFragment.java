@@ -297,7 +297,7 @@ public class GroupFragment extends Fragment {
         public void setGroupImage(String thumb_image, Context ctx){
 
             CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.group_single_image);
-            Picasso.get().load(thumb_image).placeholder(R.drawable.default_avatar).into(userImageView);
+            Picasso.get().load(thumb_image).placeholder(R.drawable.default_group_avatar ).into(userImageView);
 
         }
 

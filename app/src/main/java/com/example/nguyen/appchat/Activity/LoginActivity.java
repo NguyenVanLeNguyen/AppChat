@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 String email = mLoginEmail.getEditText().getText().toString();
                 String password = mLoginPassword.getEditText().getText().toString();
 
-                if(!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)){
+                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
 
                     mLoginProgress.setTitle("Logging In");
                     mLoginProgress.setMessage("Please wait while we check your credentials.");

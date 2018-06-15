@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = mEmail.getEditText().getText().toString();
                 String password = mPassword.getEditText().getText().toString();
 
-                if(!TextUtils.isEmpty(display_name) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)){
+                if(!TextUtils.isEmpty(display_name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
 
                     mRegProgress.setTitle("Registering User");
                     mRegProgress.setMessage("Please wait while we create your account !");
