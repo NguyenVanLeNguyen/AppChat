@@ -15,6 +15,7 @@
             android:id="@+id/groups_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="99">
 
         </android.support.v7.widget.RecyclerView>
@@ -23,11 +24,12 @@
             android:id="@+id/grfr_creat_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginBottom="10dp"
             android:layout_gravity="center"
-            android:text="Creat A New Group"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:background="@drawable/backgroud_button"
-            />
+            android:padding="10dp"
+            android:text="Creat A New Group" />
     </android.support.v7.widget.LinearLayoutCompat>
 </FrameLayout>

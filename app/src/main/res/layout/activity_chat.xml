@@ -25,7 +25,8 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/linearLayout"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/chat_app_bar" />
+            android:layout_below="@+id/chat_app_bar"
+            android:paddingLeft="10dp" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
@@ -42,7 +43,7 @@
         <ImageButton
             android:id="@+id/chat_add_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:alpha="0.75"
             android:background="@android:color/white"
@@ -52,7 +53,7 @@
         <ImageButton
             android:id="@+id/chat_location_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:alpha="0.75"
             android:background="@android:color/white"
@@ -62,7 +63,7 @@
         <EditText
             android:id="@+id/chat_message_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="8"
             android:background="@android:color/white"
             android:ems="10"
@@ -76,7 +77,7 @@
         <ImageButton
             android:id="@+id/chat_send_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:alpha="0.75"
             android:background="@android:color/white"

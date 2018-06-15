@@ -17,17 +17,20 @@
             android:id="@+id/mfriends_in_group_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="20dp"
             android:layout_weight="99">
 
         </android.support.v7.widget.RecyclerView>
+
         <Button
             android:id="@+id/listmem_creat_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
-            android:text="Add member"
-            android:background="@drawable/backgroud_button"/>
+            android:layout_weight="1"
+            android:background="@drawable/backgroud_button"
+            android:padding="20dp"
+            android:text="Add member" />
     </android.support.v7.widget.LinearLayoutCompat>
 </RelativeLayout>
